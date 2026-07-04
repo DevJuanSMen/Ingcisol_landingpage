@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+:root {
+  --color-ink: #0f1114;
+  --color-ink-soft: #252a32;
+  --color-card: #22262c;
+  --color-silver: #f4f6f8;
+  --color-accent: #e85d04;
+  --color-accent-dark: #c64e02;
+}
+
+@theme inline {
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-card: var(--color-card);
+  --color-silver: var(--color-silver);
+  --color-accent: var(--color-accent);
+  --color-accent-dark: var(--color-accent-dark);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-ink);
+  color: var(--color-silver);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  /* Cursor drag para scroll horizontal */
+  .cursor-grab {
+    cursor: grab;
+  }
+  .cursor-grab:active {
+    cursor: grabbing;
+  }
+}
+
+/* Clientes (marquee lento) */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 50s linear infinite;
+}
+
+/* Tagline band (más rápido, dirección inversa) */
+@keyframes marquee-tag {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.animate-marquee-tag {
+  animation: marquee-tag 36s linear infinite;
+}
+
+/* Dot grid background para hero */
+.bg-dot-grid {
+  background-image:
+    radial-gradient(circle, rgba(244,246,248,0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-marquee-tag {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
