@@ -7,15 +7,20 @@ export default function AboutSection() {
   return (
     <section id="nosotros" className="bg-ink px-6 py-28 md:px-12 md:py-36">
       <div className="mx-auto max-w-7xl">
-        {/* Cifras animadas (contador) */}
-        <dl className="grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-3">
+        {/* Cifras animadas (contador que se reanima en cada paso) */}
+        <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-3 lg:grid-cols-5">
           {numericStats.map((stat, index) => (
-            <Reveal key={stat.label} delay={index * 0.08}>
-              <div className="flex flex-col items-center justify-center bg-ink px-4 py-12 text-center md:py-14">
-                <dd className="text-5xl font-bold tracking-tight text-accent md:text-6xl">
-                  <AnimatedCounter value={stat.value} />
+            <Reveal key={stat.label} delay={index * 0.06}>
+              <div className="flex h-full flex-col items-center justify-center bg-ink px-4 py-10 text-center md:py-12">
+                <dd className="text-4xl font-bold tracking-tight text-accent md:text-5xl">
+                  <AnimatedCounter
+                    value={stat.value}
+                    suffix={stat.suffix}
+                    format={stat.format}
+                    repeat
+                  />
                 </dd>
-                <dt className="mt-3 text-[11px] font-semibold uppercase tracking-widest text-silver/50">
+                <dt className="mt-3 text-[11px] font-semibold uppercase leading-tight tracking-widest text-silver/50">
                   {stat.label}
                 </dt>
               </div>

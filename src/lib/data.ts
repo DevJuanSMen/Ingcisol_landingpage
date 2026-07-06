@@ -228,24 +228,33 @@ export type Testimonial = {
 
 export const testimonials: Testimonial[] = [
   {
-    name: "Director de proyecto",
-    role: "Empresa constructora — Valledupar, 2026",
+    name: "Director de obra, empresa constructora",
+    role: "Valledupar, 2026",
     quote:
-      "Testimonio pendiente de recopilar. Ver instrucción al director: solicitar testimonio escrito o en video antes del lanzamiento.",
+      "Antes de contratar a INGCISOL cotizábamos casi a ciegas. Con la interventoría técnica supimos exactamente en qué se iba cada peso del presupuesto, semana a semana.",
   },
   {
-    name: "Director de proyecto",
-    role: "Empresa constructora — Valledupar, 2026",
+    name: "Gerente de proyecto, entidad privada",
+    role: "Cesar, 2026",
     quote:
-      "Testimonio pendiente de recopilar. Ver instrucción al director: solicitar testimonio escrito o en video antes del lanzamiento.",
+      "La cuadrilla cumplió el alcance pactado sin reprocesos ni sorpresas de última hora. El seguimiento semanal nos permitió tomar decisiones a tiempo, no después del problema.",
   },
 ];
 
 // Cifras que animan como contador (solo números).
-export const numericStats = [
-  { label: "Año de fundación", value: "2023" },
-  { label: "Servicios en catálogo", value: "57" },
-  { label: "Agentes IA propios", value: "3" },
+export type NumericStat = {
+  label: string;
+  value: number;
+  suffix?: string;
+  format?: "year";
+};
+
+export const numericStats: NumericStat[] = [
+  { label: "m² intervenidos en construcción", value: 100000, suffix: "+" },
+  { label: "Entidades con las que hemos trabajado", value: 30, suffix: "+" },
+  { label: "Servicios en catálogo", value: 57 },
+  { label: "Agentes de IA propios", value: 3 },
+  { label: "Año de fundación", value: 2023, format: "year" },
 ];
 
 // Datos cualitativos (texto) — se muestran como credenciales.
@@ -332,4 +341,150 @@ export const navLinks = [
   { label: "IA", href: "#ia" },
   { label: "Proyectos", href: "#proyectos" },
   { label: "Nosotros", href: "#nosotros" },
+];
+
+// Los cinco problemas del sector con su respuesta operativa (formato problema → solución).
+export type SectorProblem = {
+  num: string;
+  tag: string;
+  solution: string;
+  body: string;
+};
+
+export const sectorProblems: SectorProblem[] = [
+  {
+    num: "01",
+    tag: "Retrasos",
+    solution: "Programación de obra con seguimiento semanal",
+    body: "No reportes de cierre de mes. Cronograma vivo, revisado cada semana contra el avance real.",
+  },
+  {
+    num: "02",
+    tag: "Sobrecostos",
+    solution: "Presupuestos con AIU y jornales actualizados",
+    body: "Tabla de jornales, AIU (A9/I1/U15) y régimen SIMPLE 7.3% revisados cada 6 meses. Nada de estimaciones genéricas.",
+  },
+  {
+    num: "03",
+    tag: "Reprocesos",
+    solution: "Interventoría técnica desde el diseño",
+    body: "El control de calidad empieza antes del primer vaciado, no después del error.",
+  },
+  {
+    num: "04",
+    tag: "Baja trazabilidad",
+    solution: "Actas y control financiero centralizados",
+    body: "Cortes de obra, caja menor y cruce de giros en un solo lugar — en desarrollo con ACTA AI.",
+  },
+  {
+    num: "05",
+    tag: "Mala planeación",
+    solution: "Diagnóstico técnico antes de cotizar",
+    body: "Visita y levantamiento de información antes de firmar, no después.",
+  },
+];
+
+// Tres líneas de negocio (reemplazan el catálogo detallado de 57 servicios).
+export type BusinessLine = {
+  title: string;
+  benefit: string;
+  items: string[];
+  anchor: string;
+  waMessage: string;
+};
+
+export const businessLines: BusinessLine[] = [
+  {
+    title: "Consultoría técnica",
+    benefit: "Para quien necesita control de proyecto sin montar un equipo interno.",
+    items: [
+      "Programación y control de obra",
+      "Interventoría y supervisión técnica",
+      "Gestión contractual",
+      "Presupuestos y planeación",
+      "Gestión de proyectos",
+    ],
+    anchor: "Desde $1.800.000 COP",
+    waMessage:
+      "Hola INGCISOL 👋 Necesito consultoría técnica (interventoría/presupuesto/programación de obra).",
+  },
+  {
+    title: "Diseño",
+    benefit: "Estudios técnicos con el mismo rigor que exige la etapa de ejecución.",
+    items: [
+      "Diseño estructural",
+      "Diseño hidráulico",
+      "Diseño arquitectónico",
+      "Diseño vial",
+      "Estudios técnicos",
+    ],
+    anchor: "Desde $35.000 COP/m² (redes hidrosanitarias)",
+    waMessage:
+      "Hola INGCISOL 👋 Necesito un diseño especializado (estructural/hidráulico/arquitectónico/vial).",
+  },
+  {
+    title: "Ejecución de obra",
+    benefit: "Mano de obra especializada. Contratos sin materiales — materiales a cargo del cliente.",
+    items: [
+      "Construcción",
+      "Pavimentos",
+      "Urbanismo",
+      "Obras hidráulicas",
+      "Infraestructura civil",
+    ],
+    anchor: "Cotización según alcance de la obra",
+    waMessage: "Hola INGCISOL 👋 Necesito cotizar ejecución de obra civil.",
+  },
+];
+
+// Método de trabajo — seis pasos en flujo.
+export type ProcessStep = {
+  num: string;
+  title: string;
+  body: string;
+};
+
+export const processSteps: ProcessStep[] = [
+  { num: "01", title: "Diagnóstico", body: "Visita técnica y levantamiento de información antes de cotizar." },
+  { num: "02", title: "Planeación", body: "Programación de obra, presupuesto y AIU definidos con jornales actualizados." },
+  { num: "03", title: "Diseño", body: "Diseño estructural, hidráulico, arquitectónico o vial según el alcance." },
+  { num: "04", title: "Construcción", body: "Ejecución con mano de obra especializada y seguimiento semanal." },
+  { num: "05", title: "Control", body: "Interventoría técnica y actas de obra — control financiero con ACTA AI." },
+  { num: "06", title: "Entrega", body: "Acta de entrega, liquidación de contrato y cierre documental." },
+];
+
+// Videos reales de obra (hover para reproducir).
+export type ExecutionVideo = {
+  src: string;
+  poster: string;
+  caption: string;
+};
+
+export const executionVideos: ExecutionVideo[] = [
+  {
+    src: "/videos/obra-concreto.mp4",
+    poster: "/videos/poster-obra-concreto.webp",
+    caption: "Vaciado de concreto — obra hidráulica",
+  },
+  {
+    src: "/videos/obra-edificacion.mp4",
+    poster: "/videos/poster-obra-edificacion.webp",
+    caption: "Estructura metálica — edificaciones",
+  },
+];
+
+// Galería de proyectos reales (scroll infinito).
+export type ProjectPhoto = {
+  src: string;
+  caption: string;
+};
+
+export const projectPhotos: ProjectPhoto[] = [
+  { src: "/proyectos/concreto-hidraulico.webp", caption: "Vaciado de placa en concreto — obra hidráulica" },
+  { src: "/proyectos/team-obra.webp", caption: "Construcción de vivienda unifamiliar — 80 unidades, ~118 m²/und" },
+  { src: "/proyectos/render-diseno-interior-1.webp", caption: "Diseño arquitectónico — anteproyecto de interiores" },
+  { src: "/proyectos/render-diseno-interior-2.webp", caption: "Diseño arquitectónico — anteproyecto de interiores" },
+  { src: "/proyectos/vial-aerea-curva.webp", caption: "Pavimentación de vía — zona rural del Caribe" },
+  { src: "/proyectos/urbanismo-aereo.webp", caption: "Construcción de andén peatonal — concreto rígido" },
+  { src: "/proyectos/topografia-vial.webp", caption: "Levantamiento topográfico — diseño vial" },
 ];

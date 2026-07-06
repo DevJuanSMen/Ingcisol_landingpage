@@ -12,7 +12,8 @@ const HEADLINE = ["Ejecución", "integral", "automatizada", "en", "construcción
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.12]);
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
 
   return (
@@ -21,15 +22,25 @@ export default function Hero() {
       id="top"
       className="relative flex min-h-screen flex-col justify-between overflow-hidden bg-ink"
     >
-      {/* Fondo parallax con dot grid */}
-      <motion.div
-        style={{ y: bgY }}
-        className="absolute inset-0 bg-dot-grid"
+      {/* Foto de fondo con parallax */}
+      <motion.div style={{ y: bgY, scale: bgScale }} className="absolute inset-0" aria-hidden>
+        <Image
+          src="/hero/hero-vial-aerea.webp"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+      </motion.div>
+
+      {/* Overlays para contraste del texto */}
+      <div
+        className="absolute inset-0 bg-gradient-to-r from-ink via-ink/80 to-ink/30"
         aria-hidden
       />
-      {/* Gradiente inferior para dar profundidad */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-ink to-transparent"
+        className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-ink to-transparent"
         aria-hidden
       />
 
@@ -49,7 +60,7 @@ export default function Hero() {
         </motion.p>
 
         {/* H1 masivo — reveal por palabra */}
-        <h1 className="text-[clamp(2.2rem,5.5vw,4.8rem)] font-bold leading-[0.95] tracking-tighter text-silver">
+        <h1 className="max-w-4xl text-[clamp(2.2rem,5.5vw,4.8rem)] font-bold leading-[0.95] tracking-tighter text-silver">
           {HEADLINE.map((word, i) => (
             <span
               key={word + i}
@@ -86,7 +97,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.65, ease: [0.16, 1, 0.3, 1] }}
-            className="max-w-lg text-base text-silver/70 md:text-lg"
+            className="max-w-lg text-base text-silver/80 md:text-lg"
           >
             Consultoría técnica, diseño y ejecución de obra en el Caribe colombiano.
             Con agentes de IA propios que acortan tiempos y protegen los márgenes de tu proyecto.
@@ -107,38 +118,31 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Credenciales */}
+        {/* Credenciales con check */}
         <motion.ul
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.9 }}
-          className="mt-10 flex flex-wrap gap-x-6 gap-y-2 text-xs text-silver/50"
+          className="mt-10 flex flex-wrap gap-x-6 gap-y-3 text-xs text-silver/70 md:text-sm"
         >
           {credentials.map((item) => (
             <li key={item} className="flex items-center gap-2">
-              <span className="h-1 w-1 rounded-full bg-accent" />
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-4 w-4 text-accent"
+                aria-hidden
+              >
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
               {item}
             </li>
           ))}
         </motion.ul>
-      </motion.div>
-
-      {/* Logo grande flotante — esquina inferior derecha */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 0.08, scale: 1 }}
-        transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute bottom-0 right-0 z-0 select-none"
-        aria-hidden
-      >
-        <Image
-          src="/logo.png"
-          alt=""
-          width={600}
-          height={600}
-          className="w-[min(60vw,500px)] object-contain"
-          priority
-        />
       </motion.div>
 
       {/* Indicador de scroll */}
@@ -152,7 +156,7 @@ export default function Hero() {
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          className="flex flex-col items-center gap-1 text-silver/40"
+          className="flex flex-col items-center gap-1 text-silver/50"
         >
           <span className="text-[10px] uppercase tracking-widest">Scroll</span>
           <span className="text-lg">↓</span>
