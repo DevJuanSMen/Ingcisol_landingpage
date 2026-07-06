@@ -41,7 +41,6 @@ export default function ServicesSection() {
 
                 <WhatsAppButton
                   href={whatsappLinks.custom(line.waMessage)}
-                  variant="outline"
                   className="mt-6 w-full"
                 >
                   Cotizar {line.title.toLowerCase()}

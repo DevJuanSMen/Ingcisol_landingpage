@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { navLinks } from "@/lib/data";
 
-const INSTAGRAM_URL = "https://www.instagram.com/ingcisol/";
+const INSTAGRAM_URL = "https://www.instagram.com/ingcisol_ingenieria/";
 const LINKEDIN_URL = "https://www.linkedin.com/company/ingcisol/";
 const WHATSAPP_URL = "https://wa.me/573022302548";
 
@@ -53,7 +53,7 @@ export default function Footer() {
                 href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Instagram @ingcisol"
+                aria-label="Instagram @ingcisol_ingenieria"
                 className="text-silver/40 transition-colors hover:text-silver"
               >
                 <IconInstagram className="h-5 w-5" />
@@ -102,7 +102,7 @@ export default function Footer() {
               className="flex items-center gap-2 hover:text-silver transition-colors"
             >
               <IconInstagram className="h-4 w-4 shrink-0" />
-              @ingcisol
+              @ingcisol_ingenieria
             </a>
             <a
               href={LINKEDIN_URL}

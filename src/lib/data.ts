@@ -195,12 +195,17 @@ export type Project = {
   facts: string[];
   description: string;
   quote: string;
+  image?: string;
+  /** true = mostrar la imagen completa (contain), p. ej. un documento/tabla. */
+  imageContain?: boolean;
 };
 
 export const projects: Project[] = [
   {
     name: "Conjunto Residencial GIRONA — Valledupar",
     client: "G&M Ingenieros Constructores",
+    image: "/proyectos/girona-presupuesto.png",
+    imageContain: true,
     scope: "Estructuración y consultoría de presupuesto integral",
     facts: ["80 viviendas de dos plantas", "118 m²/unidad", "18 meses de ejecución"],
     description:
@@ -211,6 +216,7 @@ export const projects: Project[] = [
   {
     name: "Adecuación de Local Comercial — Unicentro Valledupar",
     client: "MOLVAR Construcciones S.A.S. (Contrato INGCIS-002)",
+    image: "/renders/oficina-3.jpeg",
     scope: "Ejecución de mano de obra de acabados y remodelación",
     facts: ["Local 2-27, piso 2", "38.58 m² de área construida", "Centro Comercial Unicentro"],
     description:
@@ -254,7 +260,7 @@ export const numericStats: NumericStat[] = [
   { label: "Entidades con las que hemos trabajado", value: 30, suffix: "+" },
   { label: "Servicios en catálogo", value: 57 },
   { label: "Agentes de IA propios", value: 3 },
-  { label: "Año de fundación", value: 2023, format: "year" },
+  { label: "Años de experiencia en el sector", value: 9, suffix: "+" },
 ];
 
 // Datos cualitativos (texto) — se muestran como credenciales.

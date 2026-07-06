@@ -1,3 +1,4 @@
+import Image from "next/image";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Reveal from "@/components/motion/Reveal";
 import { projects } from "@/lib/data";
@@ -23,32 +24,52 @@ export default function ProjectsSection() {
           {projects.map((project, index) => (
             <Reveal key={project.name} delay={index * 0.12}>
               <article className="flex h-full flex-col bg-ink p-8 transition-colors hover:bg-ink-soft md:p-10">
-                <div className="relative flex aspect-[16/9] items-center justify-center overflow-hidden rounded-lg border border-white/10 bg-gradient-to-br from-ink-soft to-card">
-                  <div className="flex flex-col items-center gap-2 text-center">
-                    <span className="flex h-11 w-11 items-center justify-center rounded-full border border-accent/40 text-accent">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.6"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="h-5 w-5"
-                        aria-hidden
-                      >
-                        <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3Z" />
-                        <circle cx="12" cy="13" r="3" />
-                      </svg>
-                    </span>
-                    <span className="text-xs font-bold uppercase tracking-widest text-silver/80">
-                      Próximamente
-                    </span>
-                    <span className="text-[11px] text-silver/40">
-                      Registro fotográfico en camino
-                    </span>
+                {project.image ? (
+                  <div
+                    className={`relative aspect-[16/9] overflow-hidden rounded-lg border border-white/10 ${
+                      project.imageContain ? "bg-ink-soft" : ""
+                    }`}
+                  >
+                    <Image
+                      src={project.image}
+                      alt={project.name}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className={
+                        project.imageContain
+                          ? "object-contain p-2"
+                          : "object-cover transition-transform duration-500 hover:scale-105"
+                      }
+                    />
                   </div>
-                </div>
+                ) : (
+                  <div className="relative flex aspect-[16/9] items-center justify-center overflow-hidden rounded-lg border border-white/10 bg-gradient-to-br from-ink-soft to-card">
+                    <div className="flex flex-col items-center gap-2 text-center">
+                      <span className="flex h-11 w-11 items-center justify-center rounded-full border border-accent/40 text-accent">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.6"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="h-5 w-5"
+                          aria-hidden
+                        >
+                          <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3Z" />
+                          <circle cx="12" cy="13" r="3" />
+                        </svg>
+                      </span>
+                      <span className="text-xs font-bold uppercase tracking-widest text-silver/80">
+                        Próximamente
+                      </span>
+                      <span className="text-[11px] text-silver/40">
+                        Registro fotográfico en camino
+                      </span>
+                    </div>
+                  </div>
+                )}
 
                 <p className="mt-6 text-xs font-bold uppercase tracking-widest text-accent">
                   {project.scope}

@@ -5,7 +5,7 @@ import Image from "next/image";
 import { navLinks } from "@/lib/data";
 import { whatsappLinks } from "@/lib/whatsapp";
 
-const INSTAGRAM_URL = "https://www.instagram.com/ingcisol/";
+const INSTAGRAM_URL = "https://www.instagram.com/ingcisol_ingenieria/";
 const LINKEDIN_URL = "https://www.linkedin.com/company/ingcisol/";
 
 function IconInstagram({ className }: { className?: string }) {
@@ -62,7 +62,7 @@ export default function Navbar() {
             href={INSTAGRAM_URL}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Instagram @ingcisol"
+            aria-label="Instagram @ingcisol_ingenieria"
             className="text-silver/50 transition-colors hover:text-silver"
           >
             <IconInstagram className="h-5 w-5" />
@@ -118,7 +118,7 @@ export default function Navbar() {
               href={INSTAGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Instagram @ingcisol"
+              aria-label="Instagram @ingcisol_ingenieria"
               className="text-silver/50 hover:text-silver"
             >
               <IconInstagram className="h-5 w-5" />
