@@ -157,6 +157,7 @@ export type AIAgent = {
   title: string;
   body: string;
   flow?: string[];
+  href?: string;
 };
 
 export const aiAgents: AIAgent[] = [
@@ -168,6 +169,7 @@ export const aiAgents: AIAgent[] = [
     body:
       "El cliente escribe por WhatsApp. PROCURA AI lee el requerimiento, consulta los catálogos de precios de INGCISOL, arma el borrador y nos lo manda a aprobar. En menos de 45 minutos el cliente tiene su cotización en PDF.\n\nSin back-and-forth. Sin esperar hasta el día siguiente. Sin que una oportunidad se pierda mientras alguien la digita.",
     flow: ["WhatsApp del cliente", "PROCURA AI", "Revisión INGCISOL", "PDF al cliente"],
+    href: "https://procuraai.ingcisolai.com/login",
   },
   {
     name: "ACTA AI",
@@ -185,6 +187,7 @@ export const aiAgents: AIAgent[] = [
       "La mayoría de constructoras pierde licitaciones SECOP que sí podía ganar.\nNo por precio. Por no saber cuáles abordar.",
     body:
       "LICIFLOW consulta la base de procesos del SECOP II en tiempo real, evalúa cada licitación en 7 criterios técnicos y financieros, y la clasifica: verde (viable), amarillo (revisar), rojo (no aplica).\n\nEn vez de revisar manualmente decenas de procesos cada semana, ves solo los que tienen sentido para el perfil de tu empresa.",
+    href: "https://liciflow.ingcisolai.com/login",
   },
 ];
 

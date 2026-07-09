@@ -59,6 +59,18 @@ export default function AISection() {
                 <p className="mt-4 whitespace-pre-line text-sm leading-relaxed text-silver/60">
                   {agent.body}
                 </p>
+
+                {agent.href && (
+                  <a
+                    href={agent.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-auto inline-flex items-center gap-1.5 pt-6 text-sm font-semibold text-accent transition-colors duration-200 hover:text-accent/70"
+                  >
+                    Ingresar a {agent.name}
+                    <span aria-hidden>→</span>
+                  </a>
+                )}
               </article>
             </Reveal>
           ))}
